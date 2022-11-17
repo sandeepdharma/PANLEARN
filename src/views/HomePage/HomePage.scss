@@ -1,0 +1,120 @@
+.homepage-header-section {
+    display: flex;
+    justify-content: space-between;
+
+    // border: 1px solid red;
+    .homepage-header-title-section {
+        display: flex;
+        align-items: center;
+
+        // border: 1px solid red;
+        .ant-typography {
+            font-weight: bold;
+            font-size: 20px;
+        }
+    }
+
+    .homepage-header-components-section {
+        width: 60%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .ant-input-affix-wrapper {
+            padding: 0.5% 1.5%;
+            // border-radius: 6px;
+        }
+
+        .ant-menu-horizontal,
+        .ant-menu-item::after {
+            border: none !important;
+            color: #eeeeee;
+        }
+
+        .ant-menu>.ant-menu-item-selected {
+            color: #0076BF;
+        }
+
+        .ant-btn-primary {
+            margin-left: 4%;
+        }
+    }
+}
+
+.homepage-grid-content-section {
+    height: 68vh;
+    margin: 1% 0%;
+    background: #ffffff;
+
+    // border: 1px solid red;
+    .ant-list-item {
+        height: 20vh;
+        width: 97%;
+        background-color: #FAFAFA;
+
+        // border-radius: 20px;
+        // border: none;
+        // border: 1px solid red;
+        .ant-card-body {
+            background-color: #FAFAFA;
+            height: 20vh;
+
+            .ant-card-mata-title {
+                color: #626262;
+                font-weight: 500;
+            }
+
+            .ant-card-meta-description {
+                color: #626262;
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+.homepage-list-content-section {
+    height: 68vh;
+    margin: 1% 0%;
+    background: #ffffff;
+
+    // border: 1px solid red;
+    .ant-table-tbody>tr>td {
+        height: 5px;
+        padding: 4px;
+        background-color: #FAFAFA;
+        font-weight: 400;
+        font-size: 14px;
+        color: #626262;
+    }
+
+    .ant-table-thead>tr>th {
+        font-weight: 400;
+        font-size: 16px;
+        color: #626262;
+        height: 5px;
+        padding: 4px;
+        background-color: #ffffff;
+    }
+}
+
+.list-logo-container {
+    // border: none;
+    display: flex;
+    justify-content: flex-start;
+
+    p {
+        margin: 3% 3%;
+        font-size: 14px;
+    }
+
+    .list-logo-style {
+        width: 40px;
+        // border-radius: 50%;
+    }
+}
+
+.homepage-pagination-section {
+    // border: 1px solid red;
+    display: flex;
+    justify-content: flex-end;
+}
