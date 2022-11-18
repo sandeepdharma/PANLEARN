@@ -3,10 +3,8 @@ import PropTypes from "prop-types";
 import { List, Card, Avatar } from "antd";
 import { Link } from "react-router-dom";
 
-
 const HomePageGridContent = ({ dataSource, getSelectedItem }) => {
   const { Meta } = Card;
-  
 
   return (
     <>
@@ -24,9 +22,9 @@ const HomePageGridContent = ({ dataSource, getSelectedItem }) => {
                 getSelectedItem(item);
               }}
             >
-              {/* ?id=${item.id} */}
               {/* Edit Page Link */}
-              <Link to="/editpage">
+              <Link to="/Zhomepage/editpage">
+              
                 <Card>
                   {item.status === true ? (
                     <section className="success-status"></section>
@@ -49,7 +47,7 @@ const HomePageGridContent = ({ dataSource, getSelectedItem }) => {
           )}
         />
       </section>
-      <section className="homepage-pagination-section"></section>
+     
     </>
   );
 };
@@ -60,3 +58,5 @@ HomePageGridContent.propTypes = {
   dataSource: PropTypes.object,
   getSelectedItem: PropTypes.func,
 };
+
+{/* <section className="homepage-pagination-section"></section> */}

@@ -46,7 +46,7 @@
     margin: 1% 0%;
     background: #ffffff;
 
-    // border: 1px solid red;
+    // border: 1px solid red;   
     .ant-list-item {
         height: 20vh;
         width: 97%;
@@ -67,6 +67,25 @@
             .ant-card-meta-description {
                 color: #626262;
                 font-weight: 400;
+            }
+            .failure-status{
+                width: 3%;
+                height: 2vh;
+                background-color: red;
+                position: absolute;
+                border-radius: 50%;
+                top: 23%;
+                left: 22%;
+            }
+            
+            .success-status{
+                width: 4%;
+                height: 2vh;
+                background-color: green;
+                position: absolute;
+                border-radius: 50%;
+                top: 23%;
+                left: 25%;
             }
         }
     }

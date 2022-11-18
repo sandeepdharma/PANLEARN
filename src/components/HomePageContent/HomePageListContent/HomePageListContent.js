@@ -2,6 +2,7 @@ import { React } from "react";
 import PropTypes from "prop-types";
 import { Table } from "antd";
 import { useNavigate } from "react-router-dom";
+
 const tabelColumns = [
   {
     title: "Name",
@@ -46,7 +47,7 @@ const HomePageListContent = ({ dataSource, getSelectedItem }) => {
   const navigate = useNavigate();
   const selectedRow = (item) => {
     getSelectedItem(item);
-    navigate("/editpage");
+    navigate(-1);
   };
   return (
     <>

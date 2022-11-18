@@ -3,14 +3,7 @@ import { useState } from "react";
 import "./HomePage.scss";
 import PropTypes from "prop-types";
 
-import {
-  Typography,
-  Button,
-  Dropdown,
-  Space,
-  Input,
-  Menu,
-} from "antd";
+import { Typography, Button, Dropdown, Space, Input, Menu } from "antd";
 import {
   SearchOutlined,
   UserOutlined,
@@ -22,35 +15,32 @@ import HomePageGridContent from "../../components/HomePageContent/HomePageGridCo
 import HomePageListContent from "../../components/HomePageContent/HomePageListContent/HomePageListContent";
 import { Link } from "react-router-dom";
 
-// import { dummydata } from "../../fixtures/dummydata";
 // import PagePagination from "../../components/PagePagination/PagePagination";
 const { Text } = Typography;
 
-
-
-
-const HomePage = ({getSelectedItem}) => {
-
-
+const HomePage = ({ getSelectedItem }) => {
   // Menu Item Selection
   const [selectedMenuItem, setSelectedMenuItem] = useState("gridContent");
-
-
 
   // Switching between list and grid contents
   const componentsSwtich = (key) => {
     switch (key) {
       case "gridContent":
-        return <HomePageGridContent dataSource={dataSource} getSelectedItem={getSelectedItem} />;
+        return (
+          <HomePageGridContent
+            dataSource={dataSource}
+            getSelectedItem={getSelectedItem}
+          />
+        );
       case "listContent":
-        return <HomePageListContent dataSource={dataSource} getSelectedItem={getSelectedItem}/>;
+        return <HomePageListContent dataSource={dataSource} getSelectedItem={getSelectedItem} />;
       default:
         break;
     }
   };
 
   // Getting localstorage data for rendering
-  let data = JSON.parse(localStorage.getItem('formdata'))
+  let data = JSON.parse(localStorage.getItem("formdata"));
   // Search specific data
   const [dataSource, setDataSource] = useState(data);
   const [value, setValue] = useState("");
@@ -89,58 +79,59 @@ const HomePage = ({getSelectedItem}) => {
       ]}
     />
   );
-  const onclickMenuHandler = (e) =>{
-    setSelectedMenuItem(e.key)
-  }
+  const onclickMenuHandler = (e) => {
+    setSelectedMenuItem(e.key);
+  };
   return (
     <>
-      <section className="homepage-header-section">
-        <section className="homepage-header-title-section">
-          <Text>List Of Organisations</Text>
-        </section>
-        <section className="homepage-header-components-section">
-          <Input
-            size="small"
-            placeholder="Search for a oraganisation"
-            value={value}
-            prefix={<SearchOutlined />}
-            onChange={() => searchFuction()}
-          />
-          <Menu
-            mode="horizontal"
-            selectedKeys={selectedMenuItem}
-            onClick={(e) => onclickMenuHandler(e)}
-          >
-            <Menu.Item key="gridContent">
-              <AppstoreOutlined />
-            </Menu.Item>
-            <Menu.Item key="listContent">
-              <UnorderedListOutlined />
-            </Menu.Item>
-          </Menu>
-          <Dropdown overlay={dropdownMenuFunction}>
-            <Button size="small">
-              <Space>
-                Sort By
-                <DownOutlined />
-              </Space>
-            </Button>
-          </Dropdown>
+      
+        <section className="homepage-header-section">
+          <section className="homepage-header-title-section">
+            <Text>List Of Organisations</Text>
+          </section>
+          <section className="homepage-header-components-section">
+            <Input
+              size="small"
+              placeholder="Search for a oraganisation"
+              value={value}
+              prefix={<SearchOutlined />}
+              onChange={() => searchFuction()}
+            />
+            <Menu
+              mode="horizontal"
+              selectedKeys={selectedMenuItem}
+              onClick={(e) => onclickMenuHandler(e)}
+            >
+              <Menu.Item key="gridContent">
+                <AppstoreOutlined />
+              </Menu.Item>
+              <Menu.Item key="listContent">
+                <UnorderedListOutlined />
+              </Menu.Item>
+            </Menu>
+            <Dropdown overlay={dropdownMenuFunction}>
+              <Button size="small">
+                <Space>
+                  Sort By
+                  <DownOutlined />
+                </Space>
+              </Button>
+            </Dropdown>
 
-        
-          <Link to="/addpage">
-            <Button type="primary" size="small">
-              Add Organisation
-            </Button>
-          </Link>
+            {/* ADD PAGE LINK */}
+            <Link to="/homepage/addpage">
+              <Button type="primary" size="small">
+                Add Organisation
+              </Button>
+            </Link>
+          </section>
         </section>
-      </section>
-      <section>{componentsSwtich(selectedMenuItem)}</section>
+        <section>{componentsSwtich(selectedMenuItem)}</section>
+        
     </>
   );
 };
 export default HomePage;
-
 
 HomePage.propTypes = {
   getSelectedItem: PropTypes.func,

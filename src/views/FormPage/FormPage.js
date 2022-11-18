@@ -1,8 +1,7 @@
 import { React, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-import {useHistory} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./FormPage.scss";
 import {
@@ -34,8 +33,8 @@ const FormPage = ({ selectedData }) => {
     } else {
       //  For Edit Form
       setEditMode(true);
-      console.log("id of selected data", selectedData.id);
-      console.log("selected data", selectedData);
+      // console.log("id of selected data", selectedData.id);
+      // console.log("selected data", selectedData);
     }
   }, [selectedData]);
 
@@ -196,20 +195,12 @@ const FormPage = ({ selectedData }) => {
   const [resetModal, setResetModal] = useState(false);
   const [button, setButton] = useState(false);
   const [form] = Form.useForm();
-  const onFinish = (values) => {
-    console.log("Reset form value: ", values);
+  const onFinish = () => {
+    // console.log("Reset form value: ", values);
     setResetModal(false);
   };
   // Model---2---Sucess Page
   const [successModal, setSuccessModal] = useState(false);
-
-  // Cancle Navigation
-  // const navigate = useNavigate();
-  const history = useHistory();
-  const cancelSubmission = () => {
-    selectedData = null;
-    history.goBack()
-  };
 
   // Form Validations and LOCAL STORAGE mthods
   const formSubmitHandler = (formdata) => {
@@ -249,8 +240,14 @@ const FormPage = ({ selectedData }) => {
       formDataObject.push(formObj);
       localStorage.setItem("formdata", JSON.stringify(formDataObject));
     }
-    // window.location.href = "/";
-    history.goBack()
+    navigate('/homepage')
+  };
+
+  // Cancle Navigation
+  const navigate = useNavigate();
+  const cancelSubmission = () => {
+    selectedData = null;
+    navigate('/homepage')
   };
 
   return (
@@ -342,10 +339,6 @@ const FormPage = ({ selectedData }) => {
                         hasFeedback
                         rules={[
                           rules.confirmPassword,
-                          // {
-                          //   // required: true,
-                          //   message: "Please confirm your password!",
-                          // },
                           ({ getFieldValue }) => ({
                             validator(_, value) {
                               if (
@@ -354,13 +347,8 @@ const FormPage = ({ selectedData }) => {
                               ) {
                                 setButton(true);
                                 setButton(!button);
-                                return Promise.resolve();
+                               
                               }
-                              return Promise.reject(
-                                new Error(
-                                  "The two passwords that you entered do not match!"
-                                )
-                              );
                             },
                           }),
                         ]}
